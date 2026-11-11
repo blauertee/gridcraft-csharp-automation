@@ -1,0 +1,10 @@
+<Project>
+  <!-- Everything must build in Visual Studio 2019 with the .NET 5 SDK: C# 9 at most. -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <NativeOutputDir>$(MSBuildThisFileDirectory)native/gridcraft-ffi/target/release/</NativeOutputDir>
+  </PropertyGroup>
+</Project>

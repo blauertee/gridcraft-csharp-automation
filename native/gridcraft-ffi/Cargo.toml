@@ -1,0 +1,24 @@
+[package]
+name = "gridcraft-ffi"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "C ABI over the Gridcraft engine, consumed by the Gridcraft.Automation .NET package"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Pinned on purpose: Gridcraft has no stable Rust API. Bump this revision deliberately,
+# with the test suite as the gate.
+gridcraft-engine = { git = "https://github.com/storytold/gridcraft", rev = "5cf52c5fbb10d343316af3cc533c99b1d7ad1bf9" }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+panic = "unwind"
+
+[dev-dependencies]
+serde_json = "1"

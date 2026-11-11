@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
+  </ItemGroup>
+  <!-- By default the tests use the net5.0 build of the library. Pass -p:LibraryTarget=netstandard2.0
+       to run the same tests against the netstandard2.0 build. -->
+  <ItemGroup Condition="'$(LibraryTarget)' == ''">
+    <ProjectReference Include="../../src/Gridcraft.Automation/Gridcraft.Automation.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(LibraryTarget)' != ''">
+    <ProjectReference Include="../../src/Gridcraft.Automation/Gridcraft.Automation.csproj" SetTargetFramework="TargetFramework=$(LibraryTarget)" />
+  </ItemGroup>
+  <!-- The locally built native library (cargo build release in native/gridcraft-ffi). -->
+  <ItemGroup>
+    <None Include="$(NativeOutputDir)gridcraft_ffi.dll" Condition="Exists('$(NativeOutputDir)gridcraft_ffi.dll')" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+    <None Include="$(NativeOutputDir)libgridcraft_ffi.so" Condition="Exists('$(NativeOutputDir)libgridcraft_ffi.so')" CopyToOutputDirectory="PreserveNewest" Visible="false" />
+  </ItemGroup>
+</Project>
