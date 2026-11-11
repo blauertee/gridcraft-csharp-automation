@@ -18,3 +18,19 @@ validate and save `.xlsx` files from .NET through Gridcraft's engine.
 | `src/Gridcraft.Automation` | The C# API |
 | `tests/Gridcraft.Automation.Tests` | xUnit tests on synthetic workbooks |
 | `samples/` | Console samples |
+
+## Building
+
+Requirements: Rust 1.95 or newer, .NET 5 SDK (5.0.4xx, as shipped with Visual Studio 2019 16.11).
+
+```sh
+cd native/gridcraft-ffi
+cargo build --release      # builds the native library and pins Gridcraft by revision
+cd ../..
+dotnet build -c Release    # or open Gridcraft.Automation.sln in Visual Studio 2019
+dotnet test -c Release
+dotnet run -c Release --project samples/HelloGridcraft
+```
+
+The test and sample projects copy the native library from `native/gridcraft-ffi/target/release/`,
+so build the Rust crate first.

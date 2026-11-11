@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net5.0</TargetFrameworks>
+    <RootNamespace>Gridcraft.Automation</RootNamespace>
+    <PackageId>Gridcraft.Automation</PackageId>
+    <Description>C# API for the Gridcraft spreadsheet engine: open, edit, validate and save .xlsx files.</Description>
+    <PackageLicenseExpression>MIT OR Apache-2.0</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+</Project>
