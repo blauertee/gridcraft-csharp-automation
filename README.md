@@ -28,7 +28,8 @@ cd native/gridcraft-ffi
 cargo build --release      # builds the native library and pins Gridcraft by revision
 cd ../..
 dotnet build -c Release    # or open Gridcraft.Automation.sln in Visual Studio 2019
-dotnet test -c Release
+dotnet test -c Release                                   # against the net5.0 build
+dotnet test -c Release -p:LibraryTarget=netstandard2.0   # against the netstandard2.0 build
 dotnet run -c Release --project samples/HelloGridcraft
 ```
 

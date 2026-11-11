@@ -8,8 +8,13 @@
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- By default the tests use the net5.0 build of the library. Pass -p:LibraryTarget=netstandard2.0
+       to run the same tests against the netstandard2.0 build. -->
+  <ItemGroup Condition="'$(LibraryTarget)' == ''">
     <ProjectReference Include="../../src/Gridcraft.Automation/Gridcraft.Automation.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(LibraryTarget)' != ''">
+    <ProjectReference Include="../../src/Gridcraft.Automation/Gridcraft.Automation.csproj" SetTargetFramework="TargetFramework=$(LibraryTarget)" />
   </ItemGroup>
   <!-- The locally built native library (cargo build release in native/gridcraft-ffi). -->
   <ItemGroup>
