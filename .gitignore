@@ -1,0 +1,18 @@
+# Rust
+/native/**/target/
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.nupkg
+TestResults/
+
+# Never commit real-world spreadsheets; tests use synthetic files only
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+!tests/**/fixtures/**
